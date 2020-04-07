@@ -1,0 +1,74 @@
+# dotnet new custom solution template example
+
+The template can basically be divided into 2 parts: the configuration is located at [.template.config/template.json](https://bitbucket.org/maksym_shnurenok_itomy_ch/dotnet_solution_template/src/master/.template.config/template.json), and other files will be included in the resulting template as the subject of modification according to the configuration rules.
+
+## Template configuration
+
+Let's look at the sections which hold the most of our interest which actually do everything we need.
+
+`"shortName": "dashdevs_sln_standard"` - this is the name to be used as an alias for your template after installation, i.e. here it will be `dotnet new dashdevs_sln_standard`
+
+In this template, we use the *TemplateCompany/templatecompany*, *TemplateProduct/templateproduct* and *TemplateService/templateservice* names for a company, a product and service, respectively. 
+The next section will serve as an example of how we modify the default company name (*TemplateCompany/templatecompany*).
+
+```json
+"symbols": {
+    "company": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "TemplateCompany",
+        "replaces": "TemplateCompany",
+        "fileRename": "TemplateCompany"
+    },
+    "companyLowerCase": {
+       "type": "generated",
+       "generator": "casing",
+       "parameters": {
+         "source": "company",
+         "toLower": true
+       },
+       "replaces": "templatecompany",
+       "fileRename": "templatecompany"
+    },
+    ...
+```
+
+Here we first intoduce the template string parameter symbol named *company*, with default value *TemplateCompany*.
+*replaces* field instructs the engine to replace all text occurences of the value, which is *TemplateCompany* (it's case-sensitive).
+*fileRename* field uses the similar logic, but for files and folder names instead of file contents modification.
+Thus, if the parameter is not set, nothing changes, because we use *TemplateCompany* accross the template files already.
+
+Then we process the lowercase occurences of the *company* parameter by using a *generated* type of new *companyLowerCase* symbol and specifying the *casing* type of the *generator*.
+Generated symbols are using predefined value as a source, so we specify the *company* parameter value as the one and set *toLower* field to *true*, because we want to generate the lowercase string.
+*replaces* and *fileName* fields logic was described above.
+
+The next section allows to define the options for template sources.
+
+```json
+"sources": [
+  {
+    "exclude": [ "**/[Bb]in/**", "**/[Oo]bj/**", ".template.config/**/*", "**/*.filelist", "**/*.user", "**/*.lock.json", ".git", ".vs", "_ReSharper*/", "*.[Rr]e[Ss]harper" ]
+  }
+]
+```
+
+Here we use only *exclude* option, which can be easily modified according to your needs.
+
+## Template installation and usage
+
+To install the template locally from folder, please run `dotnet new -i pathToTemplateFolder`.
+Once it's done, you will see the list of all templates, including the new one.
+
+To use the template, please run `dotnet new templateShortName --company YourCompanyName --product YourProductName --service YourServiceName`.
+*templateShortName* is the value of *shortName* field; *product*, *company* and *service* are parameter symbols from [.template.config/template.json](.template.config/template.json) (*company* example is described above). 
+Thus, current example would require running `dotnet new dashdevs_sln_standard --company YourCompanyName --product YourProductName --service YourServiceName`.
+
+## Customization
+
+Given the current information, you can easily add or remove symbol parameters, or exclude unwanted sources.
+So basically you just need to put the source files in place and define parameters which replace string and file name occurences.
+Everything else highly depends on the solution you need, therefore making a kind of universal template doesn't look actually needed to work on.
+
+## NuGet
+
+Work with NuGet is described at https://docs.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-template-pack 

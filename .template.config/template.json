@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "DashDevs LLC",
+  "classifications": [ "DashDevs", "Solution", "Standard" ],
+  "identity": "DashDevs.Solution.Standard",
+  "name": "DashDevs LLC standard solution",
+  "shortName": "dashdevs_sln_standard",
+  "symbols": {
+    "company": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "TemplateCompany",
+        "replaces": "TemplateCompany",
+        "fileRename": "TemplateCompany"
+    },
+    "companyLowerCase": {
+       "type": "generated",
+       "generator": "casing",
+       "parameters": {
+         "source": "company",
+         "toLower": true
+       },
+       "replaces": "templatecompany",
+       "fileRename": "templatecompany"
+    },
+    "product": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "TemplateProduct",
+        "replaces": "TemplateProduct",
+        "fileRename": "TemplateProduct"
+    },
+    "productLowerCase": {
+       "type": "generated",
+       "generator": "casing",
+       "parameters": {
+         "source": "product",
+         "toLower": true
+       },
+       "replaces": "templateproduct",
+       "fileRename": "templateproduct"
+    },
+    "service": {
+       "type": "parameter",
+       "datatype": "string",
+       "defaultValue": "TemplateService",
+       "replaces": "TemplateService",
+       "fileRename": "TemplateService"
+    },
+    "serviceLowerCase": {
+       "type": "generated",
+       "generator": "casing",
+       "parameters": {
+         "source": "service",
+         "toLower": true
+       },
+       "replaces": "templateservice",
+       "fileRename": "templateservice"
+    }
+  },
+  "sources": [
+    {
+      "exclude": [ "**/[Bb]in/**", "**/[Oo]bj/**", ".template.config/**/*", "**/*.filelist", "**/*.user", "**/*.lock.json", ".git/**", ".vs/**", "_ReSharper*/", "*.[Rr]e[Ss]harper" ]
+    }
+  ]
+}

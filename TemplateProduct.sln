@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{0458B925
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{4F464592-AD3C-4C58-A3A3-E127058F04CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashDevs.TemplatePostProcessor", "tools\DashDevs.TemplatePostProcessor\DashDevs.TemplatePostProcessor.csproj", "{F01F05E2-703E-4E00-9944-23A0929FF5C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A41C4746-2709-4DDF-A72C-50C64771A8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A41C4746-2709-4DDF-A72C-50C64771A8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A41C4746-2709-4DDF-A72C-50C64771A8AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01F05E2-703E-4E00-9944-23A0929FF5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01F05E2-703E-4E00-9944-23A0929FF5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01F05E2-703E-4E00-9944-23A0929FF5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01F05E2-703E-4E00-9944-23A0929FF5C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{4B636E81-149A-42A0-B7CA-F1A21D4FEF5E} = {8812A7BA-0FA3-42F2-AFCE-5DF56DA148FC}
 		{A41C4746-2709-4DDF-A72C-50C64771A8AE} = {8812A7BA-0FA3-42F2-AFCE-5DF56DA148FC}
 		{5772B66A-DA16-4256-8947-0BB89B9C614C} = {5E83E3EA-C97B-4290-8DA7-979D54BCC69D}
+		{F01F05E2-703E-4E00-9944-23A0929FF5C4} = {0458B925-F45A-4F09-ACDB-0EF267AB3DD1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {32D62155-F4BD-4A7F-B0C3-31F46C76087C}

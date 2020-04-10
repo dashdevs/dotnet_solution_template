@@ -1,21 +1,20 @@
-﻿using DashDevs.TemplatePostProcessor.CommandHandlers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DashDevs.TemplatePostProcessor.FileProcessors
 {
-    internal class DockerComposeProcessor
+    internal class DockerComposeProcessor : IFileProcessor
     {
         private const string DefaultTab = "  ";
         private const string ServicesToken = "services:";
-        private readonly BaseFileProcessor _baseFileProcessor = new BaseFileProcessor();
 
-        public async Task AddService(string templatePath, Dictionary<string, string> replaceMap, string dockerComposePath)
-        {
-            var templateStrings = await _baseFileProcessor.ReadFileTemplateAsStrings(templatePath, replaceMap);
+        public async Task Process(string templatePath, string existingFilePath)
+    {
+            var templateStrings = await File.ReadAllLinesAsync(templatePath);
             IEnumerable<string> linesToInsert = templateStrings;
 
             if (!templateStrings.First().StartsWith(DefaultTab))
@@ -23,7 +22,7 @@ namespace DashDevs.TemplatePostProcessor.FileProcessors
                 linesToInsert = templateStrings.Select(s => s.Insert(0, DefaultTab));
             }
 
-            var composeFile = await File.ReadAllLinesAsync(dockerComposePath);
+            var composeFile = await File.ReadAllLinesAsync(existingFilePath);
             var composeFileList = composeFile.ToList();
             string actualServicesString = composeFileList.FirstOrDefault(s => s.Contains(ServicesToken));
 
@@ -39,7 +38,7 @@ namespace DashDevs.TemplatePostProcessor.FileProcessors
             {
                 var servicesLineIndex = composeFileList.IndexOf(actualServicesString);
                 var newSectionString = composeFileList
-                    .FirstOrDefault(s => !string.IsNullOrWhiteSpace(s) && composeFileList.IndexOf(s) > servicesLineIndex);
+                    .FirstOrDefault(s => !s.StartsWith(DefaultTab) && composeFileList.IndexOf(s) > servicesLineIndex);
 
                 if (!string.IsNullOrEmpty(newSectionString))
                 {
@@ -52,6 +51,10 @@ namespace DashDevs.TemplatePostProcessor.FileProcessors
             }
 
             composeFileList.InsertRange(insertionIndex, linesToInsert);
+
+            var sb = new StringBuilder();
+            composeFileList.ForEach(l => sb.AppendLine(l));
+            await File.WriteAllTextAsync(existingFilePath, sb.ToString());
         }
     }
 }

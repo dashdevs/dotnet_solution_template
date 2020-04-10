@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <AssemblyName>TemplateCompany.TemplateProduct.TemplateService</AssemblyName>
+    <RootNamespace>TemplateCompany.TemplateProduct.TemplateService</RootNamespace>
+    <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>c703615e-f6d5-45d9-90a2-b864c4129038</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Business\Abstractions\" />
+    <Folder Include="Business\Models\" />
+    <Folder Include="Business\Services\" />
+    <Folder Include="Controllers\V1\Models\Requests\" />
+    <Folder Include="Controllers\V1\Models\Responses\OpCodes\" />
+    <Folder Include="Data\Abstractions\" />
+    <Folder Include="Data\Models\" />
+    <Folder Include="Data\Storage\" />
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+  </ItemGroup>
+</Project>

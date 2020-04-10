@@ -1,0 +1,3 @@
+﻿  templateproduct.templateservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production

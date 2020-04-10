@@ -1,8 +1,5 @@
-version: '3.4'
-
-services:
-  templateproduct.templateservice:
-    image: ${DOCKER_REGISTRY-}templateservice
+﻿  templateproduct.templateservice:
+    image: templateservice
     build:
       context: .
       dockerfile: src/services/TemplateService/TemplateProduct.TemplateService/Dockerfile

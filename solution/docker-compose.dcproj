@@ -9,16 +9,7 @@
     <DockerServiceName>templateproduct.templateservice</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="docker-compose.Local.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
-    </None>
     <None Include="docker-compose.Development.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
-    </None>
-    <None Include="docker-compose.QA.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
-    </None>
-    <None Include="docker-compose.Stage.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
     <None Include="docker-compose.Production.yml">

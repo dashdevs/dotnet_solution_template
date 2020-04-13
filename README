@@ -69,11 +69,11 @@ Thus, current example would require running `dotnet new dashdevs_sln_standard --
 
 ### [Tools folder](solution/tools)
 
-This folder contains tools to be used for service templates post-processing, which will be releaved in more detail below.
+This folder contains tools to be used for service templates post-processing, which will be revealed below.
 
 ## Service template
 
-The particular template is used in conjuction with solution template.
+The particular template is used in conjuction with solution template to add new services for existing solutions.
 
 ### Template configuration
 
@@ -129,13 +129,14 @@ The reason to use custom scritps is quite trivial: unfortunately, [dotnet templa
 ]
 ```
 
-Depending on the *OS* parameter, either add_projects.bat or add_projects.sh is called. Please, note that these files are located in the [solution template](#tools-folder), because they're not service-specific and depend on a solution. Also, they actually search for all projects in the *./src/services* folder to add.
+Depending on the *OS* parameter, either add_projects.bat or add_projects.sh is called. Please, note that these files are located in the [solution template](solution/tools), because they're not service-specific and depend on a solution. Also, they actually search for all projects in the *./src/services* folder to add.
 
 ### Problems of adding a new service
 
 As you can see, the particular problem with adding projects to a solution can be solved quite simply by means of dotnet CLI, but what about other use-cases? Many of them imply absence of a ready-to-use tool, and because of inability of existing files modification the only option that's left is making a custom one for each use-case.
 
 For example, one of the most used templates would be *docker-compose* configuration modification. For this, we've implemented custom [template post-processor](solution/tools/DashDevs.TemplatePostProcessor), which actually does the following:
+
 1. Accepts custom template path (we put all of them in service's [*postprocessing*](service/postprocessing) folder. This is a text file which is a subject of template source files modification like any other, so the in-text replacement is made by the engine, thus we read the file which is already modified.
 2. Accepts path to the existing file to be modified (*docker-compose YAML* in our case) and reads it.
 3. Searches for a place to insert text from a template and inserts it.
@@ -199,6 +200,7 @@ This tool is simple and extandable, thus it's easy to add new post-processors. L
 ```
 
 The flow is next:
+
 1. Publishing the template post-processor.
 2. Applying the templates to corresponding existing files.
 3. Cleanup. By the way, tool or script execution context [may get broken for some reason](https://github.com/dotnet/templating/issues/1663#issuecomment-612181514), so in Windows environment we had to use Powershell workaround not to make additional scripts.  

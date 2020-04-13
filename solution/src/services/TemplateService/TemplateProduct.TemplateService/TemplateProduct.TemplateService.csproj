@@ -9,24 +9,6 @@
     <UserSecretsId>c703615e-f6d5-45d9-90a2-b864c4129038</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Business\**" />
-    <Compile Remove="Configuration\**" />
-    <Compile Remove="Controllers\**" />
-    <Compile Remove="Data\**" />
-    <Content Remove="Business\**" />
-    <Content Remove="Configuration\**" />
-    <Content Remove="Controllers\**" />
-    <Content Remove="Data\**" />
-    <EmbeddedResource Remove="Business\**" />
-    <EmbeddedResource Remove="Configuration\**" />
-    <EmbeddedResource Remove="Controllers\**" />
-    <EmbeddedResource Remove="Data\**" />
-    <None Remove="Business\**" />
-    <None Remove="Configuration\**" />
-    <None Remove="Controllers\**" />
-    <None Remove="Data\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
   </ItemGroup>
 </Project>

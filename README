@@ -36,10 +36,10 @@ The next section will serve as an example of how we modify the default company n
     ...
 ```
 
-Here we first intoduce the template string parameter symbol named *company*, with default value *TemplateCompany*.
-*replaces* field instructs the engine to replace all text occurences of the value, which is *TemplateCompany* (it's case-sensitive).
+Here we first introduce the template string parameter symbol named *company*, with default value *TemplateCompany*.
+*replaces* field instructs the engine to replace all text occurrences of the value, which is *TemplateCompany* (it's case-sensitive).
 *fileRename* field uses the similar logic, but for files and folder names instead of file contents modification.
-Thus, if the parameter is not set, nothing changes, because we use *TemplateCompany* accross the template files already.
+Thus, if the parameter is not set, nothing changes, because we use *TemplateCompany* across the template files already.
 
 Then we process the lowercase occurences of the *company* parameter by using a *generated* type of new *companyLowerCase* symbol and specifying the *casing* type of the *generator*.
 Generated symbols are using predefined value as a source, so we specify the *company* parameter value as the one and set *toLower* field to *true*, because we want to generate the lowercase string.
@@ -59,13 +59,13 @@ Here we use only *exclude* option, which can be easily modified according to you
 
 ### Template installation and usage
 
-To install the template locally from folder, please run `dotnet new -i pathToTemplateFolder`.
+To install the template locally from the folder, please run `dotnet new -i pathToTemplateFolder`.
 Once it's done, you will see the list of all templates, including the new one.
 
 To use the template, please run `dotnet new templateShortName --company YourCompanyName --product YourProductName --service YourServiceName`.
 *templateShortName* is the value of *shortName* field; *product*, *company* and *service* are parameter symbols from [.template.config/template.json](solution/.template.config/template.json) (*company* example is described above).
 
-Thus, current example would require running `dotnet new dashdevs_sln_standard --company YourCompanyName --product YourProductName --service YourServiceName`.
+Thus, the current example would require running `dotnet new dashdevs_sln_standard --company YourCompanyName --product YourProductName --service YourServiceName`.
 
 ### [Tools folder](solution/tools)
 
@@ -73,7 +73,7 @@ This folder contains tools to be used for service templates post-processing, whi
 
 ## Service template
 
-The particular template is used in conjuction with solution template to add new services for existing solutions.
+The particular template is used in connjuction with the solution template to add new services for existing solutions.
 
 ### Template configuration
 
@@ -102,7 +102,7 @@ The first one is *choice* parameter type, where we can specify the list of avail
 
 The second one is using a concept of [*post-actions*](https://github.com/dotnet/templating/wiki/Post-Action-Registry) to be executed after main template engine actions are finished. Our interest lies in running external scripts by specifying the *actionId* value "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2" and other parameters.
 
-The reason to use custom scritps is quite trivial: unfortunately, [dotnet template engine can't modify existing files](https://github.com/dotnet/templating/issues/2148). Here you can see how the action for adding newly created service from a template to solution is defined. 
+The reason to use custom scripts is quite trivial: unfortunately, [dotnet template engine can't modify existing files](https://github.com/dotnet/templating/issues/2148). Here you can see how the action for adding newly created service from a template to solution is defined. 
 
 ```json
 "postActions": [
@@ -209,7 +209,7 @@ The flow is next:
 
 The template can be installed just the same as the solution one, but as we've reviewed two templates already, there's a tip: you can run `dotnet new -i pathToRootTemplateFolder` within the root folder and both of them will be installed at once.
 
-To use the template, please run `dotnet new templateShortName --company YourCompanyName --product YourProductName --service YourServiceName --OS yourOS`. Another tip is to add `--allow-scripts yes` for templates which use scripts in post-actions to prevent engine from asking your confirmation before each separate script is run.
+To use the template, please run `dotnet new templateShortName --company YourCompanyName --product YourProductName --service YourServiceName --OS yourOS`. Another tip is to add `--allow-scripts yes` for templates which use scripts in post-actions to prevent the engine from asking your confirmation before each separate script is run.
 
 ## Customization
 

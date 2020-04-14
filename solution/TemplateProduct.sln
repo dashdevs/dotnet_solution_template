@@ -18,6 +18,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateProduct.TemplateService.Tests", "src\services\TemplateService\TemplateProduct.TemplateService.Tests\TemplateProduct.TemplateService.Tests.csproj", "{A41C4746-2709-4DDF-A72C-50C64771A8AE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{4B25D731-1ADB-4E3C-8DAF-DC040059E53B}"
+	ProjectSection(SolutionItems) = preProject
+		tools\add_projects.bat = tools\add_projects.bat
+		tools\add_projects.sh = tools\add_projects.sh
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DashDevs.TemplatePostProcessor", "DashDevs.TemplatePostProcessor", "{3147D2FB-0DE3-46BE-A777-22EF1245D46B}"
 EndProject
